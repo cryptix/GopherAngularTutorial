@@ -4,12 +4,6 @@ import (
 	ng "github.com/gopherjs/go-angularjs"
 )
 
-type Phone struct {
-	Id, ImageUrl  string
-	Name, Snippet string
-	Age           int
-}
-
 func main() {
 	app := ng.NewModule("gopherJsApp", []string{"ngRoute"})
 
@@ -32,22 +26,4 @@ func main() {
 
 	app.NewController("PhoneListCtrl", PhoneListCtrl)
 	app.NewController("PhoneDetailCtrl", PhoneDetailCtrl)
-}
-
-func PhoneListCtrl(scope *ng.Scope, httpService *ng.HttpService) {
-
-	httpService.Get("phones/phones.json").Success(func(data []Phone, status int) {
-		if status != 200 {
-			println("request status:", status)
-			return
-		}
-
-		scope.Set("phones", data)
-	})
-
-	scope.Set("orderProp", "Age")
-}
-
-func PhoneDetailCtrl(scope *ng.Scope, params *ng.RouteParams) {
-	scope.Set("phoneId", params.Get("phoneId"))
 }

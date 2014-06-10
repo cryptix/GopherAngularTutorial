@@ -58,9 +58,16 @@ I took the chance to break out the controllers into named functions. If they gre
 ~~The only thing I need to complete this Step is the `$routeParams`, i need to investigate how the ngRoute module calls the controller.~~ [Pull Request #5](https://github.com/gopherjs/go-angularjs/pull/5) adds the missing `$routeParams` Wrapper.
 
 
+## Step 8 - [More Templating](https://docs.angularjs.org/tutorial/step_08)
+This adds the http request to the `PhoneDetailCtrl` and extends the template with detailed data.
+
+There is an Issue regarding setting the phone data on `$scope`. It seems that string slices are somehoe mangled, they come out in go string representation in the templates, which in this case means that angular tries to set the `src` attribute of the `img` tags to something like `http://localhost:3000/[%22img/phones/dell-streak-7.0.jpg%22,%22img/phones/dell-streak-7.1.jpg%22,%22img/phones/dell-streak-7.2.jpg%22,%22img/phones/dell-streak-7.3.jpg%22,%22img/phones/dell-streak-7.4.jpg%22,%22%22]`. I added seperate scopes for these until it is fixed.
+
+
 ### TODO
-- [ ] Step 8
+- [ ] Step 9
 - [x] The gopherjs wrapper seems to miss the angularjs `$routeParams`
+- [ ] Something is wrong with `[]string` inside structs
 - [ ] `RouteProvider` doesn't know about `redirectTo`
 - [ ] Open Issue regarding the UTF8 encoding, but where?
 - [ ] The testing part of the tutorial
