@@ -2,7 +2,6 @@ package main
 
 import (
 	ng "github.com/gopherjs/go-angularjs"
-	"net/http"
 )
 
 type Phone struct {
@@ -17,7 +16,7 @@ func main() {
 	app.NewController("PhoneListCtrl", func(scope *ng.Scope, httpService *ng.HttpService) {
 
 		httpService.Get("phones/phones.json").Success(func(data []Phone, status int) {
-			if status != http.StatusOK {
+			if status != 200 {
 				println("request status:", status)
 				return
 			}
