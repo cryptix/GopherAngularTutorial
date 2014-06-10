@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"os"
 )
 
 var (
@@ -15,5 +16,9 @@ func main() {
 	flag.Parse()
 
 	addr := fmt.Sprintf("%s:%d", *host, *port)
-	panic(http.ListenAndServe(addr, http.FileServer(http.Dir("./public"))))
+	http.Handle("/gopath/", http.StripPrefix("/gopath", http.FileServer(http.Dir(os.Getenv("GOPATH")))))
+	http.Handle("/", http.FileServer(http.Dir("./public")))
+
+	fmt.Println("Listeing on", addr)
+	panic(http.ListenAndServe(addr, nil))
 }
