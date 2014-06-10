@@ -27,7 +27,7 @@ func main() {
 		rp.
 			When("/phones", listRoute).
 			When("/phones/:phoneId", detailRoute).
-			Otherwise(listRoute)
+			Otherwise(listRoute) // should be redirectTo
 	})
 
 	app.NewController("PhoneListCtrl", PhoneListCtrl)
@@ -48,7 +48,6 @@ func PhoneListCtrl(scope *ng.Scope, httpService *ng.HttpService) {
 	scope.Set("orderProp", "Age")
 }
 
-// TODO find out where to get routeParams from
-func PhoneDetailCtrl(scope *ng.Scope) {
-	scope.Set("phoneId", "42")
+func PhoneDetailCtrl(scope *ng.Scope, params *ng.RouteParams) {
+	scope.Set("phoneId", params.Get("phoneId"))
 }

@@ -55,13 +55,12 @@ This just addes some more ng-html markup to display the images of the phones as 
 This step introduces multiple views using the `ngRoute` module.
 I took the chance to break out the controllers into named functions. If they grew more they could be moved out to other go files.
 
-The only thing I to complete this Step is the `$routeParams`, i need to investigate how the ngRoute module calls the controller.
+~~The only thing I need to complete this Step is the `$routeParams`, i need to investigate how the ngRoute module calls the controller.~~ [Pull Request #5](https://github.com/gopherjs/go-angularjs/pull/5) adds the missing `$routeParams` Wrapper.
+
 
 ### TODO
 - [ ] Step 8
-- [ ] The gopherjs wrapper seems to miss the angularjs `$routeParams`
+- [x] The gopherjs wrapper seems to miss the angularjs `$routeParams`
+- [ ] `RouteProvider` doesn't know about `redirectTo`
 - [ ] Open Issue regarding the UTF8 encoding, but where?
 - [ ] The testing part of the tutorial
-
-### Issues found
-* utf8 weirdness
