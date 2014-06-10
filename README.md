@@ -44,7 +44,7 @@ Here we inject the HttpService of AngularJS into our controller to request JSON 
 The wrapped service in go ([*ng.HttpService](http://godoc.org/github.com/gopherjs/go-angularjs#HttpService)) is pretty cool, in that it does the JSON unmarshall for you, just supply the type of data you expect as the first parameter. `[]Phone` in this case and you are done.
 
 One minor thing I tripped over at first is that you need to supply two arguments to the callback otherwise you get a panic like this: `runtime error: index out of range` and a callstack in js that is not really pretty...
-It comes down to [this](https://github.com/gopherjs/go-angularjs/blob/master/http.go#L120) go code. The wrapped http service uses a hardcoded amount of arguments where it could check the `len(in)` but that can easly be fixed.
+It comes down to [this](https://github.com/gopherjs/go-angularjs/blob/master/http.go#L120) go code. The wrapped http service uses a hardcoded amount of arguments. I opend an [pull request](https://github.com/gopherjs/go-angularjs/pull/4) with a fix where it checks `len(in)` and gives you a nicer error if it is to short.
 
 
 ### TODO
