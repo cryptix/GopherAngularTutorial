@@ -64,11 +64,16 @@ func PhoneDetailCtrl(scope *ng.Scope, httpService *ng.HttpService, params *ng.Ro
 		// println(data)
 
 		scope.Set("phone", data)
+		scope.Set("mainImageUrl", data.Images[0])
 
 		// hack until $externalize works properly
 		scope.Set("phoneImages", data.Images)
 		scope.Set("phoneAvailability", data.Availability)
 		scope.Set("phoneDimensions", data.SizeAndWeight.Dimensions)
 		scope.Set("phoneCamFeatures", data.Camera.Features)
+	})
+
+	scope.Set("setImage", func(url string) {
+		scope.Set("mainImageUrl", url)
 	})
 }

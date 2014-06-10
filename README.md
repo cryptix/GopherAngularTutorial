@@ -68,6 +68,9 @@ There is an Issue regarding setting the phone data on `$scope`. It seems that st
 This just adds the Filter Module, basicly the same as in js.
 
 
+## Step 10 - [Event Handlers](https://docs.angularjs.org/tutorial/step_10)
+This just adds a simple `ng-click` handler to the thumbnails in the detail view to change the big image.
+
 ### TODO
 - [ ] Step 10
 - [x] The gopherjs wrapper seems to miss the angularjs `$routeParams`
