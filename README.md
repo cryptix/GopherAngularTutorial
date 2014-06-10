@@ -32,6 +32,9 @@ The `-o` flag specifies where to write the output to and the `-w` watches for ch
 ## Step 3 - [Filtering Repeaters](https://docs.angularjs.org/tutorial/step_03)
 This makes no changes to the controllers but I included the changes to the HTML for completness.
 
+## Step 4 - [Two-way Data Binding](https://docs.angularjs.org/tutorial/step_04)
+There is only a minimal addition the `PhoneListCtrl` to demo the `orderBy` feature of angular.
+
 ### TODO
 - [x] Step 2
 - [ ] Step 3
