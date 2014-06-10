@@ -47,8 +47,12 @@ One minor thing I tripped over at first is that you need to supply two arguments
 It comes down to [this](https://github.com/gopherjs/go-angularjs/blob/master/http.go#L120) go code. The wrapped http service uses a hardcoded amount of arguments. I opend an [pull request](https://github.com/gopherjs/go-angularjs/pull/4) with a fix where it checks `len(in)` and gives you a nicer error if it is to short.
 
 
+## Step 6 - [Templating Links & Images](https://docs.angularjs.org/tutorial/step_06)
+This just addes some more ng-html markup to display the images of the phones as thumbnails.
+
+
 ### TODO
-- [ ] Step 6
+- [ ] Step 7
 - [ ] Open Issue regarding the UTF8 encoding, but where?
 - [ ] The testing part of the tutorial
 
