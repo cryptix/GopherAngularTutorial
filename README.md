@@ -20,10 +20,20 @@ It is a minimal http server that hosts the `public` directory, much like the exa
 ## Step 1 - [Static Template](https://docs.angularjs.org/tutorial/step_01)
 I skipped this, nothing javascript related yet..
 
+## Step 2 - [Angular Templates](https://docs.angularjs.org/tutorial/step_02)
+Now the fun begins. The first controller in `app/controllers.go` is identical to the one in the original tutorial and is compiled to javascript like this: `gopherjs build app/controllers.go`. Which dumps a `contollers.js` and `controllers.js.map` in the directory you ran the `build` command in. There is a nicer way to do this:
+
+
+`gopherjs build -w -o public/controllers.js app/controllers.go`
+
+The `-o` flag specifies where to write the output to and the `-w` watches for changes to the input source and rebuilds automatically.
+
 
 ### TODO
-- [ ] Step 2
+- [x] Step 2
+- [ ] Step 3
+- [ ] Open Issue regarding the UTF8 encoding, but where?
 - [ ] The testing part of the tutorial
 
 ### Issues found
-* [utf8 weirdness]()
+* utf8 weirdness
