@@ -6,6 +6,7 @@ A port of the [AngularJS.org tutorial](https://docs.angularjs.org/tutorial) to [
 This is a minkimal fork of the original tutorial and I advice you to work through it first if you don't know angular yet.
 My aim was to see how far the angularjs wrapper for gopherjs is. I stripped out all the testing of the tutorial until jet. I also got rid of all the nodejs tools like bower to focus on the gopherjs stuff.
 
+
 ## Step 0 - [Bootstrapping](https://docs.angularjs.org/tutorial/step_00)
 
 Run `go get github.com/gopherjs/go-angularjs` to get the angularjs wrapper code. It also fetches the gopherjs package.
@@ -32,12 +33,13 @@ The `-o` flag specifies where to write the output to and the `-w` watches for ch
 ## Step 3 - [Filtering Repeaters](https://docs.angularjs.org/tutorial/step_03)
 This makes no changes to the controllers but I included the changes to the HTML for completness.
 
+
 ## Step 4 - [Two-way Data Binding](https://docs.angularjs.org/tutorial/step_04)
-There is only a minimal addition the `PhoneListCtrl` to demo the `orderBy` feature of angular.
+The `Age` field is added to the type `Phone` of the `PhoneListCtrl` to demo the `orderBy` feature of angular.
+
 
 ### TODO
-- [x] Step 2
-- [ ] Step 3
+- [ ] Step 5
 - [ ] Open Issue regarding the UTF8 encoding, but where?
 - [ ] The testing part of the tutorial
 
