@@ -11,21 +11,44 @@ type Phone struct {
 }
 
 func main() {
-	app := ng.NewModule("gopherJsApp", []string{})
+	app := ng.NewModule("gopherJsApp", []string{"ngRoute"})
 
-	app.NewController("PhoneListCtrl", func(scope *ng.Scope, httpService *ng.HttpService) {
+	app.Config(func(rp *ng.RouteProvider) {
+		listRoute := ng.RouteOptions(
+			ng.RouteController{"PhoneListCtrl"},
+			ng.RouteTemplate{"partials/phone-list.html"},
+		)
 
-		httpService.Get("phones/phones.json").Success(func(data []Phone, status int) {
-			if status != 200 {
-				println("request status:", status)
-				return
-			}
+		detailRoute := ng.RouteOptions(
+			ng.RouteController{"PhoneDetailCtrl"},
+			ng.RouteTemplate{"partials/phone-detail.html"},
+		)
 
-			scope.Set("phones", data)
-		})
-
-		scope.Set("orderProp", "Age")
-
+		rp.
+			When("/phones", listRoute).
+			When("/phones/:phoneId", detailRoute).
+			Otherwise(listRoute)
 	})
 
+	app.NewController("PhoneListCtrl", PhoneListCtrl)
+	app.NewController("PhoneDetailCtrl", PhoneDetailCtrl)
+}
+
+func PhoneListCtrl(scope *ng.Scope, httpService *ng.HttpService) {
+
+	httpService.Get("phones/phones.json").Success(func(data []Phone, status int) {
+		if status != 200 {
+			println("request status:", status)
+			return
+		}
+
+		scope.Set("phones", data)
+	})
+
+	scope.Set("orderProp", "Age")
+}
+
+// TODO find out where to get routeParams from
+func PhoneDetailCtrl(scope *ng.Scope) {
+	scope.Set("phoneId", "42")
 }

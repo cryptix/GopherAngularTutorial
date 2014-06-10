@@ -43,16 +43,23 @@ Here we inject the HttpService of AngularJS into our controller to request JSON 
 
 The wrapped service in go ([*ng.HttpService](http://godoc.org/github.com/gopherjs/go-angularjs#HttpService)) is pretty cool, in that it does the JSON unmarshall for you, just supply the type of data you expect as the first parameter. `[]Phone` in this case and you are done.
 
-One minor thing I tripped over at first is that you need to supply two arguments to the callback otherwise you get a panic like this: `runtime error: index out of range` and a callstack in js that is not really pretty...
-It comes down to [this](https://github.com/gopherjs/go-angularjs/blob/master/http.go#L120) go code. The wrapped http service uses a hardcoded amount of arguments. I opend an [pull request](https://github.com/gopherjs/go-angularjs/pull/4) with a fix where it checks `len(in)` and gives you a nicer error if it is to short.
+~~One minor thing I tripped over at first is that you need to supply two arguments to the callback otherwise you get a panic like this: `runtime error: index out of range` and a callstack in js that is not really pretty...
+It comes down to [this](https://github.com/gopherjs/go-angularjs/blob/master/http.go#L120) go code. The wrapped http service uses a hardcoded amount of arguments. I opend an [pull request](https://github.com/gopherjs/go-angularjs/pull/4) with a fix where it checks `len(in)` and gives you a nicer error if it is to short.~~ My PR landed, you now get a error message, explaining that you need two arguments in the callback.
 
 
 ## Step 6 - [Templating Links & Images](https://docs.angularjs.org/tutorial/step_06)
 This just addes some more ng-html markup to display the images of the phones as thumbnails.
 
 
+## Step 7 - [Routing & Multiple Views](https://docs.angularjs.org/tutorial/step_07)
+This step introduces multiple views using the `ngRoute` module.
+I took the chance to break out the controllers into named functions. If they grew more they could be moved out to other go files.
+
+The only thing I to complete this Step is the `$routeParams`, i need to investigate how the ngRoute module calls the controller.
+
 ### TODO
-- [ ] Step 7
+- [ ] Step 8
+- [ ] The gopherjs wrapper seems to miss the angularjs `$routeParams`
 - [ ] Open Issue regarding the UTF8 encoding, but where?
 - [ ] The testing part of the tutorial
 
