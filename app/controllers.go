@@ -2,9 +2,11 @@ package main
 
 import (
 	ng "github.com/gopherjs/go-angularjs"
+	"net/http"
 )
 
 type Phone struct {
+	Id, ImageUrl  string
 	Name, Snippet string
 	Age           int
 }
@@ -12,12 +14,15 @@ type Phone struct {
 func main() {
 	app := ng.NewModule("gopherJsApp", []string{})
 
-	app.NewController("PhoneListCtrl", func(scope *ng.Scope) {
+	app.NewController("PhoneListCtrl", func(scope *ng.Scope, httpService *ng.HttpService) {
 
-		scope.Set("phones", []Phone{
-			Phone{"Nexus S", "Fast just got faster with Nexus S.", 1},
-			Phone{"Motorola XOOM™ with Wi-Fi", "The Next, Next Generation tablet.", 2},
-			Phone{"MOTOROLA XOOM™", "The Next, Next Generation tablet.", 3},
+		httpService.Get("phones/phones.json").Success(func(data []Phone, status int) {
+			if status != http.StatusOK {
+				println("request status:", status)
+				return
+			}
+
+			scope.Set("phones", data)
 		})
 
 		scope.Set("orderProp", "Age")

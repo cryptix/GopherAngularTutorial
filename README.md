@@ -38,8 +38,17 @@ This makes no changes to the controllers but I included the changes to the HTML 
 The `Age` field is added to the type `Phone` of the `PhoneListCtrl` to demo the `orderBy` feature of angular.
 
 
+## Step 5 - [XHRs & Dependency Injection](https://docs.angularjs.org/tutorial/step_05)
+Here we inject the HttpService of AngularJS into our controller to request JSON data of the phones, instead of hardcoding them all in our controller.
+
+The wrapped service in go ([*ng.HttpService](http://godoc.org/github.com/gopherjs/go-angularjs#HttpService)) is pretty cool, in that it does the JSON unmarshall for you, just supply the type of data you expect as the first parameter. `[]Phone` in this case and you are done.
+
+One minor thing I tripped over at first is that you need to supply two arguments to the callback otherwise you get a panic like this: `runtime error: index out of range` and a callstack in js that is not really pretty...
+It comes down to [this](https://github.com/gopherjs/go-angularjs/blob/master/http.go#L120) go code. The wrapped http service uses a hardcoded amount of arguments where it could check the `len(in)` but that can easly be fixed.
+
+
 ### TODO
-- [ ] Step 5
+- [ ] Step 6
 - [ ] Open Issue regarding the UTF8 encoding, but where?
 - [ ] The testing part of the tutorial
 
