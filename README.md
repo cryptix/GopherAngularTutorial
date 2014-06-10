@@ -29,6 +29,9 @@ Now the fun begins. The first controller in `app/controllers.go` is identical to
 The `-o` flag specifies where to write the output to and the `-w` watches for changes to the input source and rebuilds automatically.
 
 
+## Step 3 - [Filtering Repeaters](https://docs.angularjs.org/tutorial/step_03)
+This makes no changes to the controllers but I included the changes to the HTML for completness.
+
 ### TODO
 - [x] Step 2
 - [ ] Step 3
