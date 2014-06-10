@@ -3,7 +3,7 @@ GopherAngularTutorial
 
 A port of the [AngularJS.org tutorial](https://docs.angularjs.org/tutorial) to [GopherJS](https://github.com/gopherjs/gopherjs) using the [go-angularjs](https://github.com/gopherjs/go-angularjs) wrapper.
 
-This is a minkimal fork of the original tutorial and I advice you to work through it first if you don't know angular yet.
+This is a minimal fork of the original tutorial and I advice you to work through that one first if you don't know angular yet.
 My aim was to see how far the angularjs wrapper for gopherjs is. I stripped out all the testing of the tutorial until jet. I also got rid of all the nodejs tools like bower to focus on the gopherjs stuff.
 
 
@@ -72,7 +72,7 @@ This just adds the Filter Module, basicly the same as in js.
 This just adds a simple `ng-click` handler to the thumbnails in the detail view to change the big image.
 
 ### TODO
-- [ ] Step 10
+- [ ] Step 11
 - [x] The gopherjs wrapper seems to miss the angularjs `$routeParams`
 - [ ] Something is wrong with `[]string` inside structs
 - [ ] `RouteProvider` doesn't know about `redirectTo`
