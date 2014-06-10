@@ -3,8 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-
-	"github.com/codegangsta/negroni"
+	"net/http"
 )
 
 var (
@@ -15,8 +14,6 @@ var (
 func main() {
 	flag.Parse()
 
-	n := negroni.Classic()
-
 	addr := fmt.Sprintf("%s:%d", *host, *port)
-	n.Run(addr)
+	panic(http.ListenAndServe(addr, http.FileServer(http.Dir("./public"))))
 }

@@ -14,7 +14,7 @@ I included `public/index.html` which is simular to the original `app/index.html`
 
 Run `go run server.go` and open [localhost:3000](http://localhost:3000) with your browser to get started.
 
-It is a minimal http server that hosts the `public` directory using [negroni](https://github.com/codegangsta/negroni) (you might need to `go get` that, too). The [pure stdlib](http://golang.org/pkg/net/http/#example_FileServer) `http.FileServer` would work, too but you don't get request logging which is kind of nice to have.
+It is a minimal http server that hosts the `public` directory, much like the example in the [stdlib](http://golang.org/pkg/net/http/#example_FileServer) `http.FileServer`.
 
 
 ## Step 1 - [Static Template](https://docs.angularjs.org/tutorial/step_01)
