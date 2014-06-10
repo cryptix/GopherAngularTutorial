@@ -64,10 +64,14 @@ This adds the http request to the `PhoneDetailCtrl` and extends the template wit
 There is an Issue regarding setting the phone data on `$scope`. It seems that string slices are somehoe mangled, they come out in go string representation in the templates, which in this case means that angular tries to set the `src` attribute of the `img` tags to something like `http://localhost:3000/[%22img/phones/dell-streak-7.0.jpg%22,%22img/phones/dell-streak-7.1.jpg%22,%22img/phones/dell-streak-7.2.jpg%22,%22img/phones/dell-streak-7.3.jpg%22,%22img/phones/dell-streak-7.4.jpg%22,%22%22]`. I added seperate scopes for these until it is fixed.
 
 
+## Step 9 - [Filters](https://docs.angularjs.org/tutorial/step_09)
+This just adds the Filter Module, basicly the same as in js.
+
+
 ### TODO
-- [ ] Step 9
+- [ ] Step 10
 - [x] The gopherjs wrapper seems to miss the angularjs `$routeParams`
 - [ ] Something is wrong with `[]string` inside structs
 - [ ] `RouteProvider` doesn't know about `redirectTo`
-- [ ] Open Issue regarding the UTF8 encoding, but where?
+- [x] Open Issue regarding the UTF8 encoding. It's [here](https://github.com/gopherjs/gopherjs/issues/47).
 - [ ] The testing part of the tutorial

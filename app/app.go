@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	app := ng.NewModule("gopherJsApp", []string{"ngRoute"})
+	app := ng.NewModule("gopherJsApp", []string{"ngRoute", "phonecatFilters"})
 
 	app.Config(func(rp *ng.RouteProvider) {
 		listRoute := ng.RouteOptions(
@@ -26,4 +26,15 @@ func main() {
 
 	app.NewController("PhoneListCtrl", PhoneListCtrl)
 	app.NewController("PhoneDetailCtrl", PhoneDetailCtrl)
+
+	ng.NewModule("phonecatFilters", []string{}).Filter("checkmark", func() func(string) string {
+		return func(input string) string {
+			if input == "undefined" || input == "false" {
+				return "\u2718"
+			} else {
+				return "\u2713"
+			}
+		}
+	})
+
 }
