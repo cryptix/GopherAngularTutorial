@@ -22,10 +22,10 @@ It is a minimal http server that hosts the `public` directory, much like the exa
 I skipped this, nothing javascript related yet..
 
 ## Step 2 - [Angular Templates](https://docs.angularjs.org/tutorial/step_02)
-Now the fun begins. The first controller in `app/controllers.go` is identical to the one in the original tutorial and is compiled to javascript like this: `gopherjs build app/controllers.go`. Which dumps a `contollers.js` and `controllers.js.map` in the directory you ran the `build` command in. There is a nicer way to do this:
+Now the fun begins. The first controller in `app/app.go` is identical to the one in the original tutorial and is compiled to javascript like this: `gopherjs build app/app.go`. Which dumps a `contollers.js` and `app.js.map` in the directory you ran the `build` command in. There is a nicer way to do this:
 
 
-`gopherjs build -w -o public/controllers.js app/controllers.go`
+`gopherjs build -w -o public/app.js app/app.go`
 
 The `-o` flag specifies where to write the output to and the `-w` watches for changes to the input source and rebuilds automatically.
 
