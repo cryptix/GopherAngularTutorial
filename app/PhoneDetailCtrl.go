@@ -5,7 +5,7 @@ import (
 )
 
 // generated using https://mholt.github.io/json-to-go/
-type PhoneDatails struct {
+type PhoneDetails struct {
 	AdditionalFeatures string `json:"additionalFeatures"`
 	Android            struct {
 		Os string `json:"os"`
@@ -56,7 +56,7 @@ type PhoneDatails struct {
 }
 
 func PhoneDetailCtrl(scope *ng.Scope, httpService *ng.HttpService, params *ng.RouteParams) {
-	httpService.Get("phones/" + params.Get("phoneId") + ".json").Success(func(data PhoneDatails, status int) {
+	httpService.Get("phones/" + params.Get("phoneId") + ".json").Success(func(data PhoneDetails, status int) {
 		if status != 200 {
 			println("request status:", status)
 			return
